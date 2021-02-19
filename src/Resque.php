@@ -1,5 +1,6 @@
 <?php
-namespace Hlgrrnhrdt\Resque;
+
+namespace Idanoo\Resque;
 
 use RuntimeException;
 
@@ -27,7 +28,7 @@ class Resque
      */
     public function setPrefix($prefix)
     {
-        \Resque_Redis::prefix($prefix);
+        \Resque\Redis::prefix($prefix);
         return $this;
     }
 
@@ -35,7 +36,7 @@ class Resque
      * @param Job  $job
      * @param bool $trackStatus
      *
-     * @return null|\Resque_Job_Status
+     * @return null|\Resque\Job\Status
      */
     public function enqueueOnce(Job $job, $trackStatus = false)
     {
@@ -43,13 +44,13 @@ class Resque
 
         foreach ($queue->jobs() as $queuedJob) {
             if (true === $job->equals($queuedJob)) {
-                return ($trackStatus) ? new \Resque_Job_Status($queuedJob->job->payload['id']) : null;
+                return ($trackStatus) ? new \Resque\Job\Status($queuedJob->job->payload['id']) : null;
             }
         }
 
         foreach ($this->working() as $workingJob) {
             if (true === $job->equals($workingJob)) {
-                return ($trackStatus) ? new \Resque_Job_Status($workingJob->job->payload['id']) : null;
+                return ($trackStatus) ? new \Resque\Job\Status($workingJob->job->payload['id']) : null;
             }
         }
 
@@ -62,11 +63,11 @@ class Resque
     private function working()
     {
         $jobs = [];
-        foreach (\Resque::redis()->smembers('workers') as $worker) {
-            $job = \Resque::redis()->get('worker:' . $worker);
+        foreach (\Resque\Resque::redis()->smembers('workers') as $worker) {
+            $job = \Resque\Resque::redis()->get('worker:' . $worker);
             $job = \json_decode($job, true);
             if (!\json_last_error()) {
-                $jobs[] = (new \Resque_Job($job['queue'], $job['payload']))
+                $jobs[] = (new \Resque\Job\Job($job['queue'], $job['payload']))
                     ->getInstance();
             }
         }
@@ -82,21 +83,21 @@ class Resque
      */
     public function enqueue(Job $job, $trackStatus = false)
     {
-        $id = \Resque::enqueue($job->queue(), $job->name(), $job->arguments(), $trackStatus);
+        $id = \Resque\Resque::enqueue($job->queue(), $job->name(), $job->arguments(), $trackStatus);
 
         if (true === $trackStatus) {
-            return new \Resque_Job_Status($id);
+            return new \Resque\Job\Status($id);
         }
 
         return null;
     }
 
     /**
-     * @return \Resque_Redis
+     * @return \Resque\Redis
      */
     public function redis()
     {
-        return \Resque::redis();
+        return \Resque\Resque::redis();
     }
 
     /**
@@ -106,6 +107,6 @@ class Resque
      */
     public function fork()
     {
-        return \Resque::fork();
+        return \Resque\Resque::fork();
     }
 }

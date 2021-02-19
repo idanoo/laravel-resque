@@ -1,5 +1,5 @@
 <?php
-namespace Hlgrrnhrdt\Resque;
+namespace Idanoo\Resque;
 
 /**
  * Worker
@@ -9,14 +9,14 @@ namespace Hlgrrnhrdt\Resque;
 class Worker
 {
     /**
-     * @var \Resque_Worker
+     * @var \Resque\Worker
      */
     private $worker;
 
     /**
-     * @param \Resque_Worker $worker
+     * @param \Resque\Worker $worker
      */
-    public function __construct(\Resque_Worker $worker)
+    public function __construct(\Resque\Worker $worker)
     {
         $this->worker = $worker;
     }

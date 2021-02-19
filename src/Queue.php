@@ -1,5 +1,6 @@
 <?php
-namespace Hlgrrnhrdt\Resque;
+
+namespace Idanoo\Resque;
 
 /**
  * Queue
@@ -34,7 +35,7 @@ class Queue
      */
     public function size()
     {
-        return \Resque::size($this->name);
+        return \Resque\Resque::size($this->name);
     }
 
     /**
@@ -42,10 +43,10 @@ class Queue
      */
     public function jobs()
     {
-        $result = \Resque::redis()->lrange('queue:' . $this->name, 0, -1);
+        $result = \Resque\Resque::redis()->lrange('queue:' . $this->name, 0, -1);
         $jobs = [];
         foreach ($result as $job) {
-            $jobs[] = (new \Resque_Job($this->name, \json_decode($job, true)))->getInstance();
+            $jobs[] = (new \Resque\Job\Job($this->name, \json_decode($job, true)))->getInstance();
         }
 
         return $jobs;

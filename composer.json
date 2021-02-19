@@ -1,22 +1,30 @@
 {
-    "name": "hlgrrnhrdt/laravel-resque",
-    "authors": [
-        {
-            "name": "Holger Reinhardt",
-            "email": "hlgrrnhrdt@gmail.com"
-        }
-    ],
+	"name": "idanoo/laravel-resque",
+	"type": "library",
+	"replace": {
+		"hlgrrnhrdt/laravel-resque": "*"
+    },
+	"description": "Wrapper for idanoo/php-resque (Laravel/Lumen ^5.2.0)",
+	"keywords": ["job", "background", "redis", "resque", "php"],
+	"homepage": "https://www.gitlab.com/idanoo/laravel-resque/",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Daniel Mason",
+			"email": "daniel@m2.nz"
+		}
+	],
     "require": {
         "illuminate/console": "^5.2",
         "illuminate/config": "^5.2",
-        "danhunsaker/php-resque": "^1.3"
+        "idanoo/php-resque": "^2.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.4"
+        "phpunit/phpunit": "^9"
     },
     "autoload": {
         "psr-4": {
-            "Hlgrrnhrdt\\Resque\\": "src/"
+            "Idanoo\\Resque\\": "src/"
         }
     }
 }

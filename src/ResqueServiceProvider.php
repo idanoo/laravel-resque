@@ -1,7 +1,8 @@
 <?php
-namespace Hlgrrnhrdt\Resque;
 
-use Hlgrrnhrdt\Resque\Console\WorkCommand;
+namespace Idanoo\Resque;
+
+use Idanoo\Resque\Console\WorkCommand;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -66,6 +67,6 @@ class ResqueServiceProvider extends ServiceProvider
 
         $dsn = sprintf('redis://%s/%s', $server, $database);
 
-        \Resque::setBackend($dsn);
+        \Resque\Resque::setBackend($dsn);
     }
 }

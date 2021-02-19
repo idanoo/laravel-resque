@@ -1,9 +1,8 @@
 <?php
-namespace Hlgrrnhrdt\Resque\Console;
+namespace Idanoo\Resque\Console;
 
-use Hlgrrnhrdt\Resque\Resque;
+use Idanoo\Resque\Resque;
 use Illuminate\Console\Command as IlluminateCommand;
-use Resque_Worker;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
@@ -28,12 +27,12 @@ class WorkCommand extends IlluminateCommand
     protected $description = 'Run a resque worker';
 
     /**
-     * @var \Hlgrrnhrdt\Resque\Resque
+     * @var \Idanoo\Resque\Resque
      */
     private $resque;
 
     /**
-     * @param \Hlgrrnhrdt\Resque\Resque $resque
+     * @param \Idanoo\Resque\Resque $resque
      */
     public function __construct(Resque $resque)
     {
@@ -64,7 +63,7 @@ class WorkCommand extends IlluminateCommand
      */
     private function startWorker(array $queues, $interval = 5)
     {
-        $worker = new Resque_Worker($queues);
+        $worker = new \Resque\Worker($queues);
         $this->info(\sprintf('Starting worker %s', $worker));
         $worker->work($interval);
     }

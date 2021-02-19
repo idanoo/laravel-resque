@@ -1,5 +1,6 @@
 <?php
-namespace Hlgrrnhrdt\Resque;
+
+namespace Idanoo\Resque;
 
 /**
  * Job
@@ -44,7 +45,7 @@ abstract class Job
      */
     public function name()
     {
-        return \get_class($this);
+        return get_class($this);
     }
 
     /**
