@@ -21,7 +21,7 @@ Additionally a default redis connection needs to be configured in ```config/redi
 
 ``` php
 'providers' => [
-    Hlgrrnhrdt\Resque\ResqueServiceProvider::class
+    Idanoo\Resque\ResqueServiceProvider::class
 ]
 ```
 
@@ -30,7 +30,7 @@ Additionally a default redis connection needs to be configured in ```config/redi
 Open ```bootstrap/app.php``` and register the required service provider
 
 ``` php
-$app->register(Hlgrrnhrdt\Resque\ResqueServiceProvider::class);
+$app->register(Idanoo\Resque\ResqueServiceProvider::class);
 ```
 
 and load the config with

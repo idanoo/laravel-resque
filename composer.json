@@ -15,8 +15,8 @@
 		}
 	],
     "require": {
-        "illuminate/console": "^5.2",
-        "illuminate/config": "^5.2",
+        "illuminate/console": "^8.0",
+        "illuminate/config": "^8.0",
         "idanoo/php-resque": "^2.0"
     },
     "require-dev": {
