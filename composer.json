@@ -6,7 +6,7 @@
     },
 	"description": "Wrapper for idanoo/php-resque (Laravel/Lumen ^5.2.0)",
 	"keywords": ["job", "background", "redis", "resque", "php"],
-	"homepage": "https://www.gitlab.com/idanoo/laravel-resque/",
+	"homepage": "https://tinker.nz/idanoo/laravel-resque/",
 	"license": "MIT",
 	"authors": [
 		{
