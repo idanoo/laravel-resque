@@ -1,0 +1,9 @@
+# Codestandards
+lint:
+  image: php:8.2
+  allow_failure: true
+  script:
+    - apt update && apt install -y wget unzip git
+    - wget https://getcomposer.org/composer.phar
+    - php composer.phar install --dev
+    - php -d memory_limit=256M vendor/bin/phpcs -s --standard=ruleset.xml
