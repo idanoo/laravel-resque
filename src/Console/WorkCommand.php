@@ -1,4 +1,5 @@
 <?php
+
 namespace Idanoo\Resque\Console;
 
 use Idanoo\Resque\Resque;
