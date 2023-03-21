@@ -1,19 +1,19 @@
 {
-	"name": "idanoo/laravel-resque",
-	"type": "library",
-	"replace": {
-		"hlgrrnhrdt/laravel-resque": "*"
+    "name": "idanoo/laravel-resque",
+    "type": "library",
+    "replace": {
+        "hlgrrnhrdt/laravel-resque": "*"
     },
-	"description": "Wrapper for idanoo/php-resque (Laravel/Lumen ^5.2.0)",
-	"keywords": ["job", "background", "redis", "resque", "php"],
-	"homepage": "https://gitlab.com/idanoo/laravel-resque/",
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Daniel Mason",
-			"email": "daniel@m2.nz"
-		}
-	],
+    "description": "Wrapper for idanoo/php-resque (Laravel/Lumen ^5.2.0)",
+    "keywords": ["job", "background", "redis", "resque", "php"],
+    "homepage": "https://github.com/idanoo/laravel-resque",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Mason",
+            "email": "daniel@m2.nz"
+        }
+    ],
     "require": {
         "illuminate/console": "^8.0",
         "illuminate/config": "^8.0",
@@ -21,17 +21,21 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^9",
-		"phpcompatibility/php-compatibility": "^9.3",
-		"dealerdirect/phpcodesniffer-composer-installer": "^1.0"
+        "phpcompatibility/php-compatibility": "^9.3",
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0"
     },
     "autoload": {
         "psr-4": {
             "Idanoo\\Resque\\": "src/"
         }
     },
-	"config": {
-		"allow-plugins": {
-			"dealerdirect/phpcodesniffer-composer-installer": true
-		}
-	}
+    "support": {
+        "issues": "https://github.com/idanoo/php-resque/issues",
+        "source": "https://github.com/idanoo/php-resque"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
 }

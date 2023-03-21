@@ -1,0 +1,16 @@
+name: CI
+on: [push]
+jobs:
+  Linter:
+    runs-on: ubuntu-latest
+    container: php:8.2
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install composer
+      run: apt-get update -yq && apt-get install git wget procps unzip -y && pecl install -o -f redis && rm -rf /tmp/pear && docker-php-ext-enable redis && wget https://getcomposer.org/composer.phar && php composer.phar install --dev
+    - name: Validate composer.json and composer.lock
+      run: php composer.phar validate --strict
+    - name: Install dependencies
+      run: php composer.phar install --dev --prefer-dist --no-progress
+    - name: Run PHPCS Linter
+      run: php -d memory_limit=256M vendor/bin/phpcs -s --standard=ruleset.xml
