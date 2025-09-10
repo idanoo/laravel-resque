@@ -21,7 +21,8 @@
         "idanoo/php-resque": "^2.5"
     },
     "require-dev": {
-        "phpunit/phpunit": "^10"
+        "phpunit/phpunit": "^10",
+        "squizlabs/php_codesniffer": "*"
     },
     "autoload": {
         "psr-4": {
