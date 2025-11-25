@@ -40,39 +40,7 @@ class Resque
      */
     public function enqueueOnce(Job $job, $trackStatus = false)
     {
-        $queue = new Queue($job->queue());
-
-        foreach ($queue->jobs() as $queuedJob) {
-            if (true === $job->equals($queuedJob)) {
-                return ($trackStatus) ? new \Resque\Job\Status($queuedJob->job->payload['id']) : null;
-            }
-        }
-
-        foreach ($this->working() as $workingJob) {
-            if (true === $job->equals($workingJob)) {
-                return ($trackStatus) ? new \Resque\Job\Status($workingJob->job->payload['id']) : null;
-            }
-        }
-
         return $this->enqueue($job, $trackStatus);
-    }
-
-    /**
-     * @return Job[]
-     */
-    private function working()
-    {
-        $jobs = [];
-        foreach (\Resque\Resque::redis()->smembers('workers') as $worker) {
-            $job = \Resque\Resque::redis()->get('worker:' . $worker);
-            $job = \json_decode($job, true);
-            if (!\json_last_error()) {
-                $jobs[] = (new \Resque\Job\Job($job['queue'], $job['payload']))
-                    ->getInstance();
-            }
-        }
-
-        return $jobs;
     }
 
     /**
